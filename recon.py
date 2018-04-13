@@ -1,11 +1,15 @@
 import os
 import time
 from multiprocessing import Process
+
+
 def dnsEnumWorker(host, port):
     """ 
     Gathers DNS information from <host>, <port>
     """
     print('Not yet implemented')
+    
+    
 def nmapTcpScan(ipAddress)
     ipAddress = ipAddress.strip()
     print "[*] Running TCP nmap scan for %s" % (ipAddress)
@@ -13,6 +17,7 @@ def nmapTcpScan(ipAddress)
     scanCommand = ""
     scanResult = subprocess.check_output(scanCommand, shell=True)
     scanLines = scanResult.split("\n")
+    
     for scanLine in scanLines:
         ports = []
         scanLine = scanLine.strip()
@@ -26,12 +31,15 @@ def nmapTcpScan(ipAddress)
                 port = servDict[service]
             ports.append(port)
             servDict[service] = ports
+            
     for service in servDict:
         ports = servDict[service]
         print "%s: found service %s" % (ipAddress, service)
         for port in ports:
             port = port.split("/")[0]
             print "port %s" % (port)
+            
+            
 def main():
     f = open('', 'r')
     for scanip in f:
@@ -40,3 +48,7 @@ def main():
         jobs.append(p)
         p.start()
     f.close()
+    
+    
+if __name__=="__main__":
+    main()    
